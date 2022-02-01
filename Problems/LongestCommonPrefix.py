@@ -1,25 +1,26 @@
-# class Solution:
-#     def longestCommonPrefix(self, strs: List[str]) -> str:
-#         prefx = ""
-#         for i in range(len(strs)):
-#             strs[i]
+
+class Solution:
+    def longestCommonPrefix(self, strs) -> str:
+        bestString = ""
+        for i in zip(*strs):
+            print(i)
+            if len(set(i)) != 1:  # As set() deletes duplicate
+                break
+            bestString += i[0]
+        return bestString
 
 
-# class Solution:
-#     def longestCommonPrefix(self, strs) -> str:
-#         bestString = ''
+sl = Solution()
+print(sl.longestCommonPrefix(["flower", "flow", "flight"]))
+# strs = ["Thushar", "Tom"]
+# for i in zip(*strs):
+#     print(set(i))
+#     if len(set(i)) != 1:
+#         print(set(i))
+#         break
 
-#         for i in zip(*strs):
-#             print(i)
-#             if len(set(i)) != 1:
-#                 break
-#             bestString += i[0]
-#         return bestString
+# print(len(set(zip(*strs))))
 
 
-# sl = Solution()
-# print(sl.longestCommonPrefix(["hi", "hello"]))
-strs = "Thushar"
-
-for i in zip(*strs):
-    print(i)
+# for i in zip(*strs):
+#     print(i)
