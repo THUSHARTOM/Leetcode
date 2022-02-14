@@ -13,11 +13,12 @@ class Solution:
             if i+1 < len(s) and roman[s[i+1]] > roman[s[i]]:
                 res -= roman[s[i]]
             else:
+                # print(i)
                 res += roman[s[i]]
-            #     print(res)
+            print(res)
             # print(s[i], i, res)
         return res
 
 
 sl = Solution()
-print(sl.romanToInt("MCMXCIV"))
+print(sl.romanToInt("IX"))
