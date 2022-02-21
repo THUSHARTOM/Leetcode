@@ -1,4 +1,7 @@
 
+from sqlalchemy import null
+
+
 class Node():
     def __init__(self, val):
         self.val = val
@@ -19,27 +22,53 @@ c.next = d
 
 q.next = r
 
+# Recursive
+
 
 def merge(head1, head2):
-    curr1 = head1
-    curr2 = head2
-    count = 0
-    while(curr1 != None and curr2 != None):
-        if count == 0:
-            count = 1
-            tail.next = curr1
-            tail = tail.next
-            curr1 = curr1.next
-        else:
-            count = 0
-            tail.next = curr2
-            tail = tail.next
-            curr2 = curr2.next
-    if curr1 == None:
-        tail.next = curr2
-    if curr2 == None:
-        tail.next = curr1
-    return tail.val
+    if(head1 == None) and (head2 == None):
+        return None
+    if head1 == None:
+        return head2
+    if head2 == None:
+        return head1
+
+    next1 = head1.next
+    next2 = head2. next
+    head1.next = head2
+    head2.next = merge(next1, next2)
+    return head1
 
 
-print(merge(a, q))
+# Iterative
+
+# def merge(head1, head2):
+#     tail = head1
+#     curr1 = tail.next
+#     curr2 = head2
+#     count = 1
+#     while(curr1 != None and curr2 != None):
+#         if count == 0:
+#             count = 1
+#             tail.next = curr1
+#             curr1 = curr1.next
+#         else:
+#             count = 0
+#             tail.next = curr2
+#             curr2 = curr2.next
+#         tail = tail.next
+#     if curr1 == None:
+#         tail.next = curr2
+#         curr = tail.next
+
+#     if curr2 == None:
+#         tail.next = curr1
+
+#     return head1
+
+
+hd = merge(a, q)
+curr = hd
+while(curr != None):
+    print(curr.val)
+    curr = curr.next
