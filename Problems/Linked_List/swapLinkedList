@@ -1,0 +1,54 @@
+
+class Node:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = None
+
+
+def make_list(elements):
+    head = Node(elements[0])
+    for element in elements[1:]:
+        ptr = head
+        while ptr.next:
+            ptr = ptr.next
+        ptr.next = Node(element)
+    return head
+
+
+class Solution:
+    def swapNodes(self, head: Node, k: int) -> Node:
+        # prev_kth = head
+        first_kth = head
+        # last_check = head
+        # prev_last_kth = head
+        kth_last = head
+
+        for i in range(k):
+            first_kth = first_kth.next
+
+        last_check = first_kth
+        while last_check.next:
+            last_check = last_check.next
+            kth_last = kth_last.next
+
+        # print("First kth element", first_kth.val)
+        # print("last Kath element", kth_last.val)
+        first_kth.val, kth_last.val = kth_last.val, first_kth.val
+        return head
+
+
+sl = Solution()
+elements = [1, 2, 3, 4, 5, 6]
+a = make_list(elements)
+h = sl.swapNodes(a, 2)
+curr = h
+while curr != None:
+    print(curr.val)
+    curr = curr.next
+
+
+# before
+    # 1->2->3->4->5
+
+# after
+    # 1->4->3->2->5

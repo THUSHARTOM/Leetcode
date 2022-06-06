@@ -1,20 +1,17 @@
 
-from sqlalchemy import null
-
-
-class Node():
+class Node:
     def __init__(self, val):
         self.val = val
         self.next = None
 
 
-a = Node("A")
-b = Node("B")
-c = Node("C")
-d = Node("D")
+a = Node(1)
+b = Node(2)
+c = Node(5)
+d = Node(6)
 
-q = Node("Q")
-r = Node("R")
+q = Node(3)
+r = Node(4)
 
 a.next = b
 b.next = c
